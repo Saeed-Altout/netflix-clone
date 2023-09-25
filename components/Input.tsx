@@ -1,39 +1,60 @@
+import React from 'react';
+
 interface InputProps {
-  onChange: any;
   id: string;
-  name: string;
-  type: string;
-  label: string;
+  onChange: any;
   value: string;
+  label: string;
+  type?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-  name,
-  type,
-  id,
-  label,
-  onChange,
-  value,
-}) => {
+const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
   return (
     <div className="relative">
       <input
+        onChange={onChange}
         value={value}
         type={type}
-        name={name}
         id={id}
-        className="block bg-neutral-700 w-full rounded-md focus:outline-none appearance-none focus:ring-0 text-white px-6 pt-6 pb-1 peer"
-        placeholder=" "
-        onChange={onChange}
+        className="
+        block
+        rounded-md
+        px-6
+        pt-6
+        pb-1
+        w-full
+        text-md
+      text-white
+      bg-neutral-700
+        appearance-none
+        focus:outline-none
+        focus:ring-0
+        peer
+        invalid:border-b-1
+        "
+        placeholder=" " 
       />
-      <label
-        htmlFor={id}
-        className="text-zinc-400 origin-[0] absolute left-6 top-4 scale-75 -translate-y-3 duration-150 ease-linear peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-focus:scale-75"
-      >
-        {label}
-      </label>
+      <label 
+        htmlFor={id} 
+        className="
+        absolute 
+        text-md
+      text-zinc-400
+        duration-150 
+        transform 
+        -translate-y-3 
+        scale-75 
+        top-4 
+        z-10 
+        origin-[0] 
+        left-6
+        peer-placeholder-shown:scale-100 
+        peer-placeholder-shown:translate-y-0 
+        peer-focus:scale-75
+        peer-focus:-translate-y-3
+      ">{label}</label>
     </div>
-  );
-};
+  )
+}
 
 export default Input;
